@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext(null);
 
+// Get API URL from environment variable
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(localStorage.getItem('token'));
@@ -19,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
     const validateToken = async () => {
         try {
-            const response = await fetch('http://localhost:8080/auth/validate', {
+            const response = await fetch(`${API_BASE_URL}/auth/validate`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -41,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username, password) => {
         try {
-            const response = await fetch('http://localhost:8080/auth/login', {
+            const response = await fetch(`${API_BASE_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,7 +71,7 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (username, password) => {
         try {
-            const response = await fetch('http://localhost:8080/auth/register', {
+            const response = await fetch(`${API_BASE_URL}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
