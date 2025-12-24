@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/TaskDetails.css';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+
 function TaskDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -38,7 +40,7 @@ function TaskDetails() {
         try {
             setLoading(true);
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/tasks/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/tasks/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -59,7 +61,7 @@ function TaskDetails() {
     const handleStatusChange = async (newStatus) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/tasks/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/tasks/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -80,7 +82,7 @@ function TaskDetails() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/tasks/${id}/subtasks`, {
+            const response = await fetch(`${API_BASE_URL}/tasks/${id}/subtasks`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -99,7 +101,7 @@ function TaskDetails() {
     const toggleSubtask = async (subtaskId, completed) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/tasks/${id}/subtasks/${subtaskId}`, {
+            const response = await fetch(`${API_BASE_URL}/tasks/${id}/subtasks/${subtaskId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -120,7 +122,7 @@ function TaskDetails() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/tasks/${id}/comments`, {
+            const response = await fetch(`${API_BASE_URL}/tasks/${id}/comments`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -139,7 +141,7 @@ function TaskDetails() {
     const handleSaveEdit = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/tasks/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/tasks/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -160,7 +162,7 @@ function TaskDetails() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/tasks/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/tasks/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,

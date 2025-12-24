@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/CreateTask.css';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+
 function CreateTask() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -67,7 +69,7 @@ function CreateTask() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:8080/tasks', {
+            const response = await fetch(`${API_BASE_URL}/tasks`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,

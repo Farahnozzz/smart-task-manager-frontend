@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import '../styles/Analytics.css';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+
 function Analytics() {
     const [analytics, setAnalytics] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -16,7 +18,7 @@ function Analytics() {
             setLoading(true);
             const token = localStorage.getItem('token');
 
-            const response = await fetch('http://localhost:8080/analytics', {
+            const response = await fetch(`${API_BASE_URL}/analytics`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
