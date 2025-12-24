@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth color transitions */
+* {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Light mode */
+html {
+    color-scheme: light;
+}
+
+/* Dark mode */
+html.dark {
+    color-scheme: dark;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 20px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+    background: #475569;
+}
+

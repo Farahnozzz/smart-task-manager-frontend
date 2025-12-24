@@ -1,0 +1,214 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Light Mode Colors - NEW PALETTE */
+    --bg-primary: #ffffff;
+    --bg-secondary: #F8F3EA;
+    --bg-tertiary: #E6D8C7;
+    --text-primary: #021024;
+    --text-secondary: #052659;
+    --text-tertiary: #5483B3;
+    --border-color: #C1B5A4;
+    --shadow: 0 4px 6px rgba(5, 38, 89, 0.08);
+    --shadow-hover: 0 12px 24px rgba(5, 38, 89, 0.15);
+    --primary: #052659;
+    --primary-light: #5483B3;
+    --accent: #7DA0CA;
+    --accent-light: #9ECCFA;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    --bg-primary: #021024;
+    --bg-secondary: #031633;
+    --bg-tertiary: #052659;
+    --text-primary: #F8F3EA;
+    --text-secondary: #E6D8C7;
+    --text-tertiary: #9ECCFA;
+    --border-color: #5483B3;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.app {
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+.main-content {
+    min-height: calc(100vh - 80px);
+    padding-top: 0;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Dark Mode Overrides for Components */
+.dark .page,
+.dark .analytics-page,
+.dark .create-task-page,
+.dark .task-details-page {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.dark .task-card,
+.dark .stat-card,
+.dark .chart-card,
+.dark .task-main-section,
+.dark .comments-section,
+.dark .create-task-container {
+    background: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+.dark .task-title,
+.dark .stat-number,
+.dark .chart-title,
+.dark .task-main-title,
+.dark h1, .dark h2, .dark h3 {
+    color: var(--text-primary);
+}
+
+.dark .task-description,
+.dark .stat-content h3,
+.dark .meta-label,
+.dark .subtitle {
+    color: var(--text-secondary);
+}
+
+.dark .task-meta,
+.dark .meta-text {
+    color: var(--text-tertiary);
+}
+
+.dark .task-card:hover,
+.dark .stat-card:hover,
+.dark .chart-card:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.dark .empty-state,
+.dark .no-data-message,
+.dark .progress-section,
+.dark .insights-section {
+    background: var(--bg-tertiary);
+}
+
+.dark .form-input,
+.dark .form-textarea,
+.dark .form-select,
+.dark .subtask-input,
+.dark .comment-textarea,
+.dark .edit-title,
+.dark .edit-description {
+    background: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.dark .form-input:focus,
+.dark .form-textarea:focus,
+.dark .form-select:focus,
+.dark .subtask-input:focus,
+.dark .comment-textarea:focus {
+    background: var(--bg-primary);
+}
+
+.dark .subtask-item,
+.dark .comment-item,
+.dark .meta-card {
+    background: var(--bg-tertiary);
+}
+
+.dark .preview-section {
+    background: var(--bg-tertiary);
+}
+
+.dark .task-preview-card {
+    background: var(--bg-primary);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Selection */
+::selection {
+    background: var(--accent);
+    color: white;
+}
+
+::-moz-selection {
+    background: var(--accent);
+    color: white;
+}
+
+/* Focus Styles */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Smooth Transitions */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+button, a, input, textarea, select {
+    transition: all 0.3s ease;
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .header-actions,
+    .form-actions,
+    .timer-section,
+    .theme-toggle {
+        display: none !important;
+    }
+}
